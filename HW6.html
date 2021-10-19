@@ -1,0 +1,61 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function isAmicable() {
+            var first_num = document.getElementById('first');
+            var second_num = document.getElementById('second');
+            
+            //find factors and sum of first Number
+            var first_factors = new Array();
+            var sum_first_factors = 0;
+            for (var i = 1; i < first_num.value; i++) {
+                if ((first_num.value % i) == 0){
+                    first_factors.push(i);
+                    sum_first_factors += i;
+                }
+            }
+            
+            //find factors and sum of second Number
+            var second_factors = new Array();
+            var sum_second_factors = 0;
+            for (var i = 1; i < second_num.value; i++) {
+                if ((second_num.value % i) == 0){
+                    second_factors.push(i);
+                    sum_second_factors += i;
+                }
+            }
+            
+            //check if sums add up using bool and display appropriate message
+            var amicable = false;
+            var amicableMsg = document.getElementById('areAmicable');
+            
+            if (sum_second_factors == first_num.value && sum_first_factors 
+                == second_num.value) {
+                amicable = true;
+                amicableMsg.innerHTML = "The numbers: "+ first_num.value + " and "
+                + second_num.value + " are amicable numbers."
+            }
+            
+            else {
+                amicableMsg.innerHTML = "The numbers: "+ first_num.value + " and "
+                + second_num.value + " are not amicable numbers."
+            }
+            
+            //display factors (happens before amicable test result)
+            alert("Factors of: " + first_num.value + ": " + first_factors + 
+            "\r\n" + "Factors of: " + second_num.value + ": " + second_factors
+            );
+        }
+    </script>
+    </head>
+    
+<body>
+    <h3>Insert two values below to check if they are amicable</h3>
+    <form>
+        Input first value: <input type="text" id="first"/><br/>
+        Input second value: <input type="text" id="second"/><br/>
+        <input type ="button" value="Submit" onClick= "isAmicable()" />
+    </form>
+    <div id = "areAmicable"></div>
+</body>
+</html>
